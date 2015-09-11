@@ -1,0 +1,1 @@
+﻿export var url = 'mongodb://vm-srv-web/bandtracker';

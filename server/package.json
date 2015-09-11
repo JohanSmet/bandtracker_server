@@ -1,0 +1,15 @@
+{
+  "name": "bandtracker",
+  "version": "0.0.0",
+  "description": "server",
+  "main": "app.js",
+  "author": {
+    "name": "Johan Smet",
+    "email": "johan.smet@justcode.be"
+  },
+  "private": true,
+  "dependencies": {
+    "express": "^4.13.3",
+    "mongoose": "^4.1.6"
+  }
+}
