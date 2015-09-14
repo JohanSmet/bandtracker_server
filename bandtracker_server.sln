@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "server", "server\server.njsproj", "{8AD39856-E803-4385-9E68-0373F31E4BBE}"
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "server", "server.njsproj", "{8AD39856-E803-4385-9E68-0373F31E4BBE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

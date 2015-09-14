@@ -2,7 +2,7 @@
   "name": "bandtracker",
   "version": "0.0.0",
   "description": "server",
-  "main": "app.js",
+  "main": "server.js",
   "author": {
     "name": "Johan Smet",
     "email": "johan.smet@justcode.be"
