@@ -1,8 +1,8 @@
 ﻿///////////////////////////////////////////////////////////////////////////////
 //
-// File 	: 	input/motion/device_factory.cpp
+// File 	: 	server.ts
 //
-// Purpose	: 	create motion input devices
+// Purpose	: 	main entry point of the server
 //
 // Copyright (c) 2015	Johan SMET      All rights reserved
 //
@@ -11,8 +11,10 @@
 import mongoose = require('mongoose');
 import express  = require('express');
 
-import cfg_db   = require('config/db');
-import cfg_http = require('config/http');
+import cfg_db   = require('./config/db');
+import cfg_http = require('./config/http');
+
+import BandController = require('./controller/BandController');
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -20,6 +22,8 @@ import cfg_http = require('config/http');
 //
 
 var app = express();
+
+app.use('/api/bands', BandController);
 
 ///////////////////////////////////////////////////////////////////////////////
 //

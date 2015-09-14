@@ -1,0 +1,20 @@
+[{
+        "MBID": "ca891d65-d9b0-4258-89f7-e6ba29d83767",
+        "name": "Iron Maiden",
+        "genre": "Metal",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/IronMaidencollage2.jpg/250px-IronMaidencollage2.jpg",
+        "biography": {
+            "en": "Iron Maiden are an English heavy metal band formed in Leyton, east London, in 1975 by bassist and primary songwriter Steve Harris. The band's discography has grown to thirty-seven albums, including sixteen studio albums, eleven live albums, four EPs, and seven compilations. Pioneers of the New Wave of British Heavy Metal, Iron Maiden achieved initial success during the early 1980s. After several line-up changes, the band went on to release a series of UK and US platinum and gold albums, including 1982's The Number of the Beast, 1983's Piece of Mind, 1984's Powerslave, 1985's live release Live After Death, 1986's Somewhere in Time and 1988's Seventh Son of a Seventh Son. Since the return of lead vocalist Bruce Dickinson and guitarist Adrian Smith in 1999, the band have undergone a resurgence in popularity,[1] with their 2010 studio offering, The Final Frontier, peaking at No. 1 in 28 different countries and receiving widespread critical acclaim. Their sixteenth studio album, The Book of Souls, was released on 4 September 2015."
+        },
+        "source": "https://en.wikipedia.org/wiki/Iron_Maiden"
+    }, {
+        "MBID": "5182c1d9-c7d2-4dad-afa0-ccfeada921a8",
+        "name": "Black Sabbath",
+        "genre": "Metal",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Sabs.jpg/250px-Sabs.jpg",
+        "biography": {
+            "en": "Black Sabbath are an English rock band, formed in Birmingham in 1968, by guitarist and main songwriter Tony Iommi, bassist and main lyricist Geezer Butler, singer Ozzy Osbourne, and drummer Bill Ward. The band have since experienced multiple line-up changes, with guitarist Iommi being the only constant presence in the band through the years. Originally formed in 1968 as a blues rock band, the group soon adopted the Black Sabbath moniker and began incorporating occult themes with horror-inspired lyrics and tuned-down guitars. Despite an association with these two themes, Black Sabbath also composed songs dealing with social instability, political corruption, the dangers of drug abuse and apocalyptic prophecies of the horrors of war. Osbourne's regular abuse of drugs and alcohol led to his dismissal from the band in 1979. He was replaced by former Rainbow vocalist Ronnie James Dio. Following two albums with Dio, Black Sabbath endured countless personnel changes in the 1980s and 1990s that included vocalists Ian Gillan, Glenn Hughes, Ray Gillen and Tony Martin, as well as several drummers and bassists. In 1992, Iommi and Butler rejoined Dio and drummer Vinny Appice to record Dehumanizer. The original line-up reunited with Osbourne in 1997 and released a live album Reunion. Black Sabbath's 19th studio album, 13, which features all of the original members but Ward, was released in June 2013."
+        },
+        "source": "https://en.wikipedia.org/wiki/Black_Sabbath"
+    }
+]
