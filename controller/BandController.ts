@@ -62,17 +62,16 @@ router.get('/:id', function (request: express.Request, response: express.Respons
     });
 });
 
-
 ///////////////////////////////////////////////////////////////////////////////
 //
 // insert/update a particular band
 //
 
-router.post('/:id', jsonParser, function (request: express.Request, response: express.Response) {
+router.post('/', jsonParser, function (request: express.Request, response: express.Response) {
     // XXX validate request body   
 
     // update database
-    Band.repository.findOneAndUpdate({ 'MBID': request.params.id }, request.body, { upsert: true }, function (err, res) {
+    Band.repository.findOneAndUpdate({ 'MBID': request.body.MBID }, request.body, { upsert: true }, function (err, res) {
         if (err)
             return response.send(400, err);
 
