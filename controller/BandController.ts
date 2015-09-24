@@ -41,7 +41,7 @@ router.get('/find-by-name', function (request: express.Request, response: expres
     var f_fields = { MBID: 1, name: 1, genre: 1, imageUrl: 1 }
     f_fields['biography.' + f_lang] = 1;
 
-    Band.repository.findOne({ 'name': new RegExp('.*' + request.query.name + '.*', 'i') }, f_fields, function (err, res) {
+    Band.repository.find({ 'name': new RegExp('.*' + request.query.name + '.*', 'i') }, f_fields, function (err, res) {
         if (err)
             return response.send(400, err);
         if (!res)
