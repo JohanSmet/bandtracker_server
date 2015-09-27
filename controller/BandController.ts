@@ -37,18 +37,20 @@ router.get('/find-by-name', function (request: express.Request, response: expres
     
     // XXX escape query variables
 
-    var f_lang   = ('lang' in request.query) ? request.query.lang : 'en';
-    var f_fields = { MBID: 1, name: 1, genre: 1, imageUrl: 1 }
-    f_fields['biography.' + f_lang] = 1;
+    var f_lang = ('lang' in request.query) ? request.query.lang : 'en';
 
-    Band.repository.find({ 'name': new RegExp('.*' + request.query.name + '.*', 'i') }, f_fields, function (err, res) {
-        if (err)
-            return response.send(400, err);
-        if (!res)
-            return response.sendStatus(404);
+    Band.repository.aggregate()
+        .match({ 'name': new RegExp('.*' + request.query.name + '.*', 'i') })
+        .project({ _id: 0, MBID: 1, name: 1, genre: 1, imageUrl: 1, biography: `$biography.${f_lang}` })
+        .sort('name')
+        .exec(function (err, res) {
+            if (err)
+                return response.send(400, err);
+            if (!res)
+                return response.sendStatus(404);
 
-        response.send(res);
-    });
+            response.send(res);
+        });
 });
 
 ///////////////////////////////////////////////////////////////////////////////
