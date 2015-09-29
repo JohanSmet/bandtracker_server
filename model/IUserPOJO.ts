@@ -1,0 +1,18 @@
+﻿///////////////////////////////////////////////////////////////////////////////
+//
+// File 	: 	IUserPOJO.ts
+//
+// Purpose	: 	User Interface
+//
+// Copyright (c) 2015	Johan SMET      All rights reserved
+//
+///////////////////////////////////////////////////////////////////////////////
+
+interface IUserPOJO {
+    name: string;
+    passwdHash: string;
+    salt: string;
+    roles: [string];
+};
+
+export = IUserPOJO;

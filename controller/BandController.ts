@@ -12,6 +12,7 @@ import mongoose     = require('mongoose');
 import express      = require('express');
 import bodyParser   = require('body-parser');
 
+import auth     = require('../middleware_auth');
 import Band     = require('../model/Band');
 
 var router = express.Router();
@@ -22,7 +23,7 @@ var jsonParser = bodyParser.json()
 // list all bands
 //
 
-router.get('/', function (request: express.Request, response: express.Response) {
+router.get('/', auth.requireApp, function (request: express.Request, response: express.Response) {
     Band.repository.find(function (err, res) {
         response.send(res);
     });
@@ -33,7 +34,7 @@ router.get('/', function (request: express.Request, response: express.Response) 
 // find by name
 //
 
-router.get('/find-by-name', function (request: express.Request, response: express.Response) {
+router.get('/find-by-name', auth.requireApp, function (request: express.Request, response: express.Response) {
     
     // XXX escape query variables
 
@@ -58,7 +59,7 @@ router.get('/find-by-name', function (request: express.Request, response: expres
 // fetch a particular band
 //
 
-router.get('/:id', function (request: express.Request, response: express.Response) {
+router.get('/:id', auth.requireApp, function (request: express.Request, response: express.Response) {
     Band.repository.findOne({ 'MBID': request.params.id }, function (err, res) {
         if (err)
             return response.send(400, err);
@@ -74,7 +75,7 @@ router.get('/:id', function (request: express.Request, response: express.Respons
 // insert/update a particular band
 //
 
-router.post('/', jsonParser, function (request: express.Request, response: express.Response) {
+router.post('/', auth.requireAdmin, jsonParser, function (request: express.Request, response: express.Response) {
     // XXX validate request body   
 
     // update database

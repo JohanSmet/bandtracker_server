@@ -1,0 +1,1 @@
+﻿export var secret = "f3kl1k#ms14ffd";

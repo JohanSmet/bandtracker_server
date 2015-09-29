@@ -13,8 +13,50 @@
         "genre": "Metal",
         "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Sabs.jpg/250px-Sabs.jpg",
         "biography": {
-            "en": "Black Sabbath are an English rock band, formed in Birmingham in 1968, by guitarist and main songwriter Tony Iommi, bassist and main lyricist Geezer Butler, singer Ozzy Osbourne, and drummer Bill Ward. The band have since experienced multiple line-up changes, with guitarist Iommi being the only constant presence in the band through the years. Originally formed in 1968 as a blues rock band, the group soon adopted the Black Sabbath moniker and began incorporating occult themes with horror-inspired lyrics and tuned-down guitars. Despite an association with these two themes, Black Sabbath also composed songs dealing with social instability, political corruption, the dangers of drug abuse and apocalyptic prophecies of the horrors of war. Osbourne's regular abuse of drugs and alcohol led to his dismissal from the band in 1979. He was replaced by former Rainbow vocalist Ronnie James Dio. Following two albums with Dio, Black Sabbath endured countless personnel changes in the 1980s and 1990s that included vocalists Ian Gillan, Glenn Hughes, Ray Gillen and Tony Martin, as well as several drummers and bassists. In 1992, Iommi and Butler rejoined Dio and drummer Vinny Appice to record Dehumanizer. The original line-up reunited with Osbourne in 1997 and released a live album Reunion. Black Sabbath's 19th studio album, 13, which features all of the original members but Ward, was released in June 2013."
+            "en": "Black Sabbath are an English rock band, formed in Birmingham in 1968, by guitarist and main songwriter Tony Iommi, bassist and main lyricist Geezer Butler, singer Ozzy Osbourne, and drummer Bill Ward. The band have since experienced multiple line-up changes, with guitarist Iommi being the only constant presence in the band through the years. Originally formed in 1968 as a blues rock band, the group soon adopted the Black Sabbath moniker and began incorporating occult themes with horror-inspired lyrics and tuned-down guitars. Despite an association with these two themes, Black Sabbath also composed songs dealing with social instability, political corruption, the dangers of drug abuse and apocalyptic prophecies of the horrors of war. Osbourne's regular abuse of drugs and alcohol led to his dismissal from the band in 1979. He was replaced by former Rainbow vocalist Ronnie James Dio. Following two albums with Dio, Black Sabbath endured countless personnel changes in the 1980s and 1990s that included vocalists Ian Gillan, Glenn Hughes, Ray Gillen and Tony Martin, as well as several drummers and bassists. In 1992, Iommi and Butler rejoined Dio and drummer Vinny Appice to record Dehumanizer. The original line-up reunited with Osbourne in 1997 and released a live album Reunion. Black Sabbath's 19th studio album, 13, which features all of the original members but Ward, was released in June 2013.",
+            "nl": "Black Sabbath is een Britse band (opgericht in Birmingham) die door velen beschouwd wordt als de eerste metalband, of de Granddaddy of Metal. De band maakte in de loop der jaren verschillende veranderingen in de samenstelling door, waarin alleen gitarist Tony Iommi een constante bleef."
         },
         "source": "https://en.wikipedia.org/wiki/Black_Sabbath"
-    }
+    }, {
+         "MBID" : "08003348-b873-4b22-91af-c1592cdf2f08",
+         "name" :  "Channel Zero",
+         "genre" :  "Metal",
+         "imageUrl" :  "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Channel_Zero_%40_Rock_Hard_Festival_2015_07.jpg/220px-Channel_Zero_%40_Rock_Hard_Festival_2015_07.jpg",
+         "biography" :  {
+            "en" :  "Channel Zero is a Belgian heavy metal band, formed in Brussels, Belgium, in 1990. They are one of the best known heavy metal bands from Belgium. They disbanded at the height of their career in 1997, however in 2009, the band announced a series of reunion gigs starting in January 2010."
+         },
+         "source" :  "https://en.wikipedia.org/wiki/Channel_Zero_%28band%29"
+   }, {
+          "MBID" :  "41f4d85a-0bd7-4602-a3e3-8c47f36efb0a",
+          "name" :  "Accept",
+          "genre" :  "Metal",
+          "imageUrl" : "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/AcceptStockolm2010-3.JPG/267px-AcceptStockolm2010-3.JPG",
+          "biography" :  {
+              "en" :  "Accept is a German heavy metal band from the town of Solingen, originally assembled by former vocalist Udo Dirkschneider, guitarist Wolf Hoffmann and bassist Peter Baltes. Their beginnings can be traced back to the late 1960s. The band played an important role in the development of speed and thrash metal, being part of the German heavy metal scene, which emerged in the early to mid-1980s. Accept achieved commercial success with their fifth studio album Balls to the Wall (1983), which remains the band's only album to be certified gold in the United States and Canada, and spawned their well-known hit Balls to the Wall. Following their disbandment in 1997 and short-lived reunion in 2005, Accept reunited again in 2009 with former T.T. Quick frontman Mark Tornillo[5] replacing Dirkschneider and released their three highest charting albums to date, Blood of the Nations (2010), Stalingrad (2012) and Blind Rage (2014), the latter of which was Accept's first album to reach number one on the charts in their home country. Accept is currently preparing to work on a new album."
+          },
+          "source" :  "https://en.wikipedia.org/wiki/Accept_%28band%29"
+      },
+      {
+          "MBID" :  "0383dadf-2a4e-4d10-a46a-e9e041da8eb3",
+          "name" :  "Queen",
+          "genre" :  "Rock",
+          "imageUrl" : "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Queen_-_montagem.png/250px-Queen_-_montagem.png",
+          "biography" :  {
+              "en" :  "Queen are a British rock band formed in London in 1970. They originally consisted of Freddie Mercury (lead vocals, piano), Brian May (guitar, vocals), John Deacon (bass guitar), and Roger Taylor (drums, vocals). Queen's earliest works were influenced by progressive rock, hard rock and heavy metal, but the band gradually ventured into more conventional and radio-friendly works by incorporating further styles, such as arena rock and pop rock, into their music.",
+          },
+          "source" :  "https://en.wikipedia.org/wiki/Queen_%28band%29"
+      },
+            {
+          "MBID" :  "",
+          "name" :  "",
+          "genre" :  "",
+          "imageUrl" : "",
+          "biography" :  {
+              "en" :  "",
+          },
+          "source" :  ""
+      }
+
+
+       
 ]

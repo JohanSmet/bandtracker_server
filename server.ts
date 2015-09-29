@@ -15,6 +15,7 @@ import cfg_db   = require('./config/db');
 import cfg_http = require('./config/http');
 
 import BandController = require('./controller/BandController');
+import AuthController = require('./controller/AuthController');
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -24,6 +25,7 @@ import BandController = require('./controller/BandController');
 var app = express();
 
 app.use('/api/bands', BandController);
+app.use('/api/auth', AuthController);
 
 ///////////////////////////////////////////////////////////////////////////////
 //
