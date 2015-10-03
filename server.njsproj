@@ -38,12 +38,15 @@
     <TypeScriptCompile Include="config\db.ts" />
     <TypeScriptCompile Include="config\http.ts" />
     <TypeScriptCompile Include="controller\BandController.ts" />
+    <TypeScriptCompile Include="controller\CountryController.ts" />
     <TypeScriptCompile Include="controller\TourDateController.ts" />
     <TypeScriptCompile Include="controller\AuthController.ts" />
     <TypeScriptCompile Include="KeyValueStore.ts" />
     <TypeScriptCompile Include="middleware_auth.ts" />
     <TypeScriptCompile Include="model\Band.ts" />
+    <TypeScriptCompile Include="model\Country.ts" />
     <TypeScriptCompile Include="model\IBandPOJO.ts" />
+    <TypeScriptCompile Include="model\ICountryPOJO.ts" />
     <TypeScriptCompile Include="model\IKeyValuePOJO.ts" />
     <TypeScriptCompile Include="model\ITourDatePOJO.ts" />
     <TypeScriptCompile Include="model\IUserPOJO.ts" />
