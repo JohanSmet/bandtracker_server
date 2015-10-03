@@ -40,11 +40,14 @@
     <TypeScriptCompile Include="controller\BandController.ts" />
     <TypeScriptCompile Include="controller\TourDateController.ts" />
     <TypeScriptCompile Include="controller\AuthController.ts" />
+    <TypeScriptCompile Include="KeyValueStore.ts" />
     <TypeScriptCompile Include="middleware_auth.ts" />
     <TypeScriptCompile Include="model\Band.ts" />
     <TypeScriptCompile Include="model\IBandPOJO.ts" />
+    <TypeScriptCompile Include="model\IKeyValuePOJO.ts" />
     <TypeScriptCompile Include="model\ITourDatePOJO.ts" />
     <TypeScriptCompile Include="model\IUserPOJO.ts" />
+    <TypeScriptCompile Include="model\KeyValue.ts" />
     <TypeScriptCompile Include="model\TourDate.ts" />
     <TypeScriptCompile Include="model\User.ts" />
     <TypeScriptCompile Include="server.ts" />

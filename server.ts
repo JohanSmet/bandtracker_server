@@ -17,6 +17,8 @@ import cfg_http = require('./config/http');
 import BandController = require('./controller/BandController');
 import AuthController = require('./controller/AuthController');
 
+import KeyValueStore  = require('./KeyValueStore');
+
 ///////////////////////////////////////////////////////////////////////////////
 //
 // setup express
@@ -36,6 +38,9 @@ mongoose.connect(cfg_db.url);
 
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
 mongoose.connection.once('open', function (callback) {
+
+    // load state
+    KeyValueStore.load();
 
     // start web-service
     var server = app.listen(cfg_http.port, function () {
