@@ -18,6 +18,7 @@ import BandController = require('./controller/BandController');
 import AuthController = require('./controller/AuthController');
 
 import KeyValueStore  = require('./KeyValueStore');
+import TaskScheduler = require('./background/TaskScheduler');
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -45,5 +46,8 @@ mongoose.connection.once('open', function (callback) {
     // start web-service
     var server = app.listen(cfg_http.port, function () {
     });
+
+    // start background-tasks
+    TaskScheduler.init();
 
 });
