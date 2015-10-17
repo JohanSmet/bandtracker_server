@@ -28,6 +28,12 @@
     },
     "jsonwebtoken/jsonwebtoken.d.ts": {
       "commit": "ffceea9dd124d277c4597c7bd12930666ec074c5"
+    },
+    "request/request.d.ts": {
+      "commit": "381479952e9725f6e14e7974f082b5e11585bf0b"
+    },
+    "form-data/form-data.d.ts": {
+      "commit": "381479952e9725f6e14e7974f082b5e11585bf0b"
     }
   }
 }

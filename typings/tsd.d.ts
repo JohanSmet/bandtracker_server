@@ -6,3 +6,5 @@
 /// <reference path="body-parser/body-parser.d.ts" />
 /// <reference path="node-uuid/node-uuid.d.ts" />
 /// <reference path="jsonwebtoken/jsonwebtoken.d.ts" />
+/// <reference path="request/request.d.ts" />
+/// <reference path="form-data/form-data.d.ts" />
