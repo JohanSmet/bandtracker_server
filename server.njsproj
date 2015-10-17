@@ -51,7 +51,9 @@
     <TypeScriptCompile Include="model\ITourDatePOJO.ts" />
     <TypeScriptCompile Include="model\IUserPOJO.ts" />
     <TypeScriptCompile Include="model\KeyValue.ts" />
+    <TypeScriptCompile Include="model\Task.ts" />
     <TypeScriptCompile Include="model\TourDate.ts" />
+    <TypeScriptCompile Include="model\ITaskPOJO.ts" />
     <TypeScriptCompile Include="model\User.ts" />
     <TypeScriptCompile Include="server.ts" />
     <TypeScriptCompile Include="typings\express\express.d.ts" />
