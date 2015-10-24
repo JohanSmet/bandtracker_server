@@ -43,6 +43,7 @@
     <TypeScriptCompile Include="config\db.ts" />
     <TypeScriptCompile Include="config\http.ts" />
     <TypeScriptCompile Include="controller\BandController.ts" />
+    <TypeScriptCompile Include="controller\CityController.ts" />
     <TypeScriptCompile Include="controller\CountryController.ts" />
     <TypeScriptCompile Include="controller\TourDateController.ts" />
     <TypeScriptCompile Include="controller\AuthController.ts" />
