@@ -16,6 +16,7 @@ import cfg_http = require('./config/http');
 
 import BandController   = require('./controller/BandController');
 import AuthController   = require('./controller/AuthController');
+import CountryController= require('./controller/CountryController');
 import VenueController  = require('./controller/VenueController');
 
 import KeyValueStore    = require('./KeyValueStore');
@@ -30,6 +31,7 @@ var app = express();
 
 app.use('/api/bands',   BandController);
 app.use('/api/auth',    AuthController);
+app.use('/api/country', CountryController);
 app.use('/api/venue',   VenueController);
 
 ///////////////////////////////////////////////////////////////////////////////
