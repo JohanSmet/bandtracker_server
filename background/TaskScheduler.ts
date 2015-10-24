@@ -15,6 +15,7 @@ import Task = require('../model/Task');
 import TaskMusicBrainzArtists   = require("./TaskMusicBrainzArtists");
 import TaskMusicBrainzUrl       = require("./TaskMusicBrainzUrl");
 import TaskWikipediaBandBio     = require("./TaskWikipediaBandBio");
+import TaskWikipediaTourDates   = require("./TaskWikipediaTourDates");
 
 export function init() {
     task_runner();
@@ -44,6 +45,8 @@ function task_execute(task: Task.ITask) {
         TaskMusicBrainzUrl.execute(task.taskParams);
     } else if (task.taskType == "wikipediaBandBio") {
         TaskWikipediaBandBio.execute(task.taskParams);
+    } else if (task.taskType == "wikipediaTourDates") {
+        TaskWikipediaTourDates.execute(task.taskParams);
     }
 
 }
