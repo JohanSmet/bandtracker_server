@@ -46,6 +46,7 @@
     <TypeScriptCompile Include="controller\CountryController.ts" />
     <TypeScriptCompile Include="controller\TourDateController.ts" />
     <TypeScriptCompile Include="controller\AuthController.ts" />
+    <TypeScriptCompile Include="controller\VenueController.ts" />
     <TypeScriptCompile Include="KeyValueStore.ts" />
     <TypeScriptCompile Include="middleware_auth.ts" />
     <TypeScriptCompile Include="model\Band.ts" />

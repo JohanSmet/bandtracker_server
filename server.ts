@@ -14,11 +14,12 @@ import express  = require('express');
 import cfg_db   = require('./config/db');
 import cfg_http = require('./config/http');
 
-import BandController = require('./controller/BandController');
-import AuthController = require('./controller/AuthController');
+import BandController   = require('./controller/BandController');
+import AuthController   = require('./controller/AuthController');
+import VenueController  = require('./controller/VenueController');
 
-import KeyValueStore  = require('./KeyValueStore');
-import TaskScheduler = require('./background/TaskScheduler');
+import KeyValueStore    = require('./KeyValueStore');
+import TaskScheduler    = require('./background/TaskScheduler');
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -27,8 +28,9 @@ import TaskScheduler = require('./background/TaskScheduler');
 
 var app = express();
 
-app.use('/api/bands', BandController);
-app.use('/api/auth', AuthController);
+app.use('/api/bands',   BandController);
+app.use('/api/auth',    AuthController);
+app.use('/api/venue',   VenueController);
 
 ///////////////////////////////////////////////////////////////////////////////
 //
