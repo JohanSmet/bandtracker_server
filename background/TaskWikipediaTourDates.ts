@@ -36,10 +36,10 @@ class WikipediaTourDateParser {
         var f_result: string = '';
 
         if (this.m_rowspan_count[p_name] <= 0) {
-            if (p_col.children().length > 0) {
-                f_result = p_col.children(':not(.sortkey)').html();
+            if (p_col.children("a").length > 0) {
+                f_result = p_col.children(':not(.sortkey)').text();
             } else {
-                f_result = p_col.html();
+                f_result = p_col.text();
             }
 
             if (p_col.attr('rowspan') != undefined) {
@@ -158,7 +158,7 @@ function handleGig(band: Band.IBand, gig: { [key: string]: string }) {
             return;
         }
     
-        var startDate = new Date(gig["date"]);
+        var startDate = parseDate(gig["date"]);
 
         TourDate.repository.findOne({ 'bandId': band.MBID, 'startDate': startDate }, function (err, tourdate) {
             if (!tourdate) {
@@ -176,7 +176,11 @@ function handleGig(band: Band.IBand, gig: { [key: string]: string }) {
             tourdate.save();
         });
 
-
     });
+}
 
+function parseDate(input: string): Date {
+    var f_clean = input.replace(/\[.*\]/, "");
+    var f_local = new Date(f_clean);
+    return new Date(Date.UTC(f_local.getFullYear(), f_local.getMonth(), f_local.getDate()));
 }
