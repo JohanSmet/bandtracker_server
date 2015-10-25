@@ -50,7 +50,7 @@ mongoose.connection.once('open', function (callback) {
     KeyValueStore.load();
 
     // start web-service
-    var server = app.listen(cfg_http.port, function () {
+    var server = app.listen(cfg_http.port, cfg_http.host, function () {
     });
 
     // start background-tasks
