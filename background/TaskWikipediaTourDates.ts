@@ -36,7 +36,7 @@ class WikipediaTourDateParser {
         var f_result: string = '';
 
         if (this.m_rowspan_count[p_name] <= 0) {
-            if (p_col.children("a").length > 0) {
+            if (p_col.children("a").length > 0 || p_col.children("span").length > 0) {
                 f_result = p_col.children(':not(.sortkey)').text();
             } else {
                 f_result = p_col.text();
