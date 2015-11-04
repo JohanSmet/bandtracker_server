@@ -53,7 +53,13 @@ export function execute(params: string[]) {
 
         lang = contentText.attr("lang");
 
-        bandBio = contentText.find('p').first().html();
+        var block = contentText.find('p').first();
+
+        while (block.has("> span.error").length > 0) {
+            block = block.next("p");
+        }
+
+        bandBio = block.html();
         bandBio = striptags(bandBio, ["b", "i", "u"]);
         
         // update the band
