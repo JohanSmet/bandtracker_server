@@ -56,6 +56,36 @@ router.get('/find', auth.requireApp, function (request: express.Request, respons
         });
 });
 
+///////////////////////////////////////////////////////////////////////////////
+//
+// band-years : get all years with known tourdates for specified band
+//
+
+router.get("/band-years", auth.requireApp, function (request: express.Request, response: express.Response) {
+
+    var f_query = { bandId: request.query.band };
+
+    TourDate.repository.aggregate()
+        .match(f_query)
+        .project({ _id: 0, year: { $year: "$startDate" } })
+        .group({ _id: "$year" })
+        .sort("_id")
+        .exec(function (err, res : any) {
+            if (err)
+                return response.send(400, err);
+            if (!res)
+                return response.sendStatus(404);
+
+            var f_result: string[] = [];
+
+            for (var f_idx = 0; f_idx < res.length; ++f_idx) {
+                f_result.push(res[f_idx]._id);
+            }
+
+            response.json(f_result);
+        });
+});
+
 
 export = router;
 
