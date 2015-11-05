@@ -10,7 +10,9 @@
 
 interface ICountryPOJO {
     code: string;
-    name: { [key: string]: string; }
+    name: { [key: string]: string; },
+    smallFlag : Buffer
+    flag : Buffer
 };
 
 export = ICountryPOJO;

@@ -17,6 +17,8 @@ export interface ICountry extends ICountryPOJO, mongoose.Document {
 var countrySchema = new mongoose.Schema({
     code: String,
     name: {},
+    smallFlag: Buffer,
+    flag : Buffer
 });
 
 export var repository = mongoose.model<ICountry>("Country", countrySchema);
