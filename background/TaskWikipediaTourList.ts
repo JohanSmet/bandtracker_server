@@ -33,7 +33,7 @@ export function execute(params: string[]) {
         // parse the html data
         var $ = cheerio.load(body);
 
-        var contentText = $("div#mw-content-text div.mw-category");
+        var contentText = $("div#mw-content-text div.mw-content-ltr");
 
         contentText.find('a').each(function (index, link) {
 
