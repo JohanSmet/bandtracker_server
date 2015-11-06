@@ -61,6 +61,7 @@ export function execute(params: string[]) {
 
         bandBio = block.html();
         bandBio = striptags(bandBio, ["b", "i", "u"]);
+        bandBio = bandBio.replace(/\[[0-9]+\]/g, "");
         
         // update the band
         Band.repository.findOne({ 'MBID': f_bandId }, function (err, band) {
@@ -70,6 +71,7 @@ export function execute(params: string[]) {
                 if (!band.biography)
                     band.biography = {};
                 band.biography[lang] = bandBio;
+                band.markModified("biography");
                 band.source = f_url;
 
                 band.save();
