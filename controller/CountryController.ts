@@ -49,7 +49,7 @@ router.get('/sync', auth.requireApp, function (request: express.Request, respons
     }
 
     Country.repository.aggregate()
-        .project({ _id: 0, code: 1, smallFlag : "$flag", name: `$name.${f_lang}` })
+        .project({ _id: 0, code: 1, flag : "$smallFlag", name: `$name.${f_lang}` })
         .sort('code')
         .exec(function (err, countries : [Country.ICountry]) {
             if (err)
