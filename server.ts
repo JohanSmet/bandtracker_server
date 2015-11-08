@@ -20,6 +20,7 @@ import CountryController= require('./controller/CountryController');
 import VenueController  = require('./controller/VenueController');
 import CityController   = require('./controller/CityController');
 import TourDateController = require('./controller/TourDateController');
+import TaskController   = require('./controller/TaskController');
 
 import KeyValueStore    = require('./KeyValueStore');
 import TaskScheduler    = require('./background/TaskScheduler');
@@ -35,8 +36,9 @@ app.use('/api/bands',   BandController);
 app.use('/api/auth',    AuthController);
 app.use('/api/country', CountryController);
 app.use('/api/venue',   VenueController);
-app.use('/api/city', CityController);
+app.use('/api/city',    CityController);
 app.use('/api/tourdate', TourDateController);
+app.use('/api/task',    TaskController);
 
 ///////////////////////////////////////////////////////////////////////////////
 //

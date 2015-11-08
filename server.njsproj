@@ -46,6 +46,7 @@
     <TypeScriptCompile Include="controller\BandController.ts" />
     <TypeScriptCompile Include="controller\CityController.ts" />
     <TypeScriptCompile Include="controller\CountryController.ts" />
+    <TypeScriptCompile Include="controller\TaskController.ts" />
     <TypeScriptCompile Include="controller\TourDateController.ts" />
     <TypeScriptCompile Include="controller\AuthController.ts" />
     <TypeScriptCompile Include="controller\VenueController.ts" />
