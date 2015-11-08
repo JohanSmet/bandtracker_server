@@ -170,8 +170,8 @@ function handleGig(band: Band.IBand, gig: { [key: string]: string }) {
                 tourdate.supportAct = false;
             }
 
-            tourdate.venue       = gig["venue"];
-            tourdate.city        = gig["city"];
+            tourdate.venue       = gig["venue"].replace(/\[[0-9]+\]/g, "");
+            tourdate.city        = gig["city"].replace(/\[[0-9]+\]/g, "");;
             tourdate.countryCode = country.code;
             tourdate.save();
         });
