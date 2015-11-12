@@ -17,6 +17,7 @@ import TaskMusicBrainzUrl       = require("./TaskMusicBrainzUrl");
 import TaskWikipediaBandBio     = require("./TaskWikipediaBandBio");
 import TaskWikipediaTourDates   = require("./TaskWikipediaTourDates");
 import TaskWikipediaTourList    = require("./TaskWikipediaTourList");
+import TaskSetlistFmTourDates   = require("./TaskSetlistFmTourDates");
 
 export function init() {
     task_runner();
@@ -50,6 +51,8 @@ function task_execute(task: Task.ITask) {
         TaskWikipediaTourDates.execute(task.taskParams);
     } else if (task.taskType == "wikipediaTourList") {
         TaskWikipediaTourList.execute(task.taskParams);
+    } else if (task.taskType == "setlistFmTourDates") {
+        TaskSetlistFmTourDates.execute(task.taskParams);
     }
 
 }

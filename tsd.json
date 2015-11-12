@@ -37,6 +37,9 @@
     },
     "cheerio/cheerio.d.ts": {
       "commit": "af5b8275d1f2b92738b93fddabc461fc20c553a1"
+    },
+    "async/async.d.ts": {
+      "commit": "708609e0764daeb5eb64104af7aca50c520c4e6e"
     }
   }
 }

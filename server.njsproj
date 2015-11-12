@@ -37,6 +37,7 @@
     <TypeScriptCompile Include="background\TaskMusicBrainzUrl.ts" />
     <TypeScriptCompile Include="background\TaskScheduler.ts" />
     <TypeScriptCompile Include="background\TaskMusicBrainzArtists.ts" />
+    <TypeScriptCompile Include="background\TaskSetlistFmTourDates.ts" />
     <TypeScriptCompile Include="background\TaskWikipediaBandBio.ts" />
     <TypeScriptCompile Include="background\TaskWikipediaTourDates.ts" />
     <TypeScriptCompile Include="background\TaskWikipediaTourList.ts" />
