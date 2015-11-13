@@ -116,7 +116,6 @@ function handleGig(gig: { [key: string]: string }) {
 }
 
 function parseDate(input: string): Date {
-    var f_clean = input.replace(/\[.*\]/, "");
-    var f_local = new Date(f_clean);
-    return new Date(Date.UTC(f_local.getFullYear(), f_local.getMonth(), f_local.getDate()));
+    var f_parts = input.split("-");
+    return new Date(parseInt(f_parts[2]), parseInt(f_parts[1]) - 1,  parseInt(f_parts[0]));
 }
