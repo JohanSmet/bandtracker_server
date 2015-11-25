@@ -56,6 +56,42 @@ router.get('/find-by-name', auth.requireApp, function (request: express.Request,
 
 ///////////////////////////////////////////////////////////////////////////////
 //
+// list a selection of bands
+//
+
+router.get("/list", auth.requireAdmin, function (request: express.Request, response: express.Response) {
+
+    // XXX escape query variables
+    var p_lang  = ("lang"  in request.query) ? request.query.lang : "en";
+    var p_count = ("count" in request.query) ? parseInt(request.query.count) : 100;
+    var p_skip  = ("skip"  in request.query) ? parseInt(request.query.skip) : 0;
+    var p_sort  = ("sort"  in request.query) ? request.query.sort : "name";
+    
+    // construct query
+    var f_match = {}
+    if ("source" in request.query) {
+        f_match["source"] = new RegExp(request.query.source, "i");
+    }
+
+    // execute query
+    Band.repository.aggregate()
+        .match(f_match)
+        .project({ _id: 0, MBID: 1, name: 1, genre: 1, imageUrl: 1, source: 1, biography: `$biography.${p_lang}` })
+        .sort(p_sort)
+        .skip(p_skip)
+        .limit(p_count)
+        .exec(function (err, res) {
+            if (err)
+                return response.send(400, err);
+            if (!res)
+                return response.sendStatus(404);
+
+            response.send(res);
+        });
+});
+
+///////////////////////////////////////////////////////////////////////////////
+//
 // fetch a particular band
 //
 
@@ -69,6 +105,8 @@ router.get('/:id', auth.requireApp, function (request: express.Request, response
         response.send(res);
     });
 });
+
+
 
 ///////////////////////////////////////////////////////////////////////////////
 //
