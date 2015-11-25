@@ -117,5 +117,5 @@ function handleGig(gig: { [key: string]: string }) {
 
 function parseDate(input: string): Date {
     var f_parts = input.split("-");
-    return new Date(parseInt(f_parts[2]), parseInt(f_parts[1]) - 1,  parseInt(f_parts[0]));
+    return new Date(Date.UTC(parseInt(f_parts[2]), parseInt(f_parts[1]) - 1, parseInt(f_parts[0])));
 }
