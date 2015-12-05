@@ -33,6 +33,11 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="editor\views\index.handlebars">
+      <Publish>False</Publish>
+    </Content>
+    <Content Include="editor\views\layouts\main.handlebars" />
+    <Content Include="editor\views\login.handlebars" />
     <Content Include="package.json" />
     <TypeScriptCompile Include="background\TaskMusicBrainzUrl.ts" />
     <TypeScriptCompile Include="background\TaskScheduler.ts" />
@@ -51,6 +56,9 @@
     <TypeScriptCompile Include="controller\TourDateController.ts" />
     <TypeScriptCompile Include="controller\AuthController.ts" />
     <TypeScriptCompile Include="controller\VenueController.ts" />
+    <TypeScriptCompile Include="editor\api\BandTrackerClient.ts" />
+    <TypeScriptCompile Include="editor\api\RestClient.ts" />
+    <TypeScriptCompile Include="editor\EditorMain.ts" />
     <TypeScriptCompile Include="KeyValueStore.ts" />
     <TypeScriptCompile Include="middleware_auth.ts" />
     <TypeScriptCompile Include="model\Band.ts" />
@@ -74,8 +82,12 @@
   <ItemGroup>
     <Folder Include="config\" />
     <Folder Include="controller\" />
+    <Folder Include="editor\api\" />
+    <Folder Include="editor\views\" />
+    <Folder Include="editor\views\layouts\" />
     <Folder Include="model\" />
     <Folder Include="background\" />
+    <Folder Include="editor\" />
     <Folder Include="typings\" />
     <Folder Include="typings\express\" />
     <Folder Include="typings\mime\" />
