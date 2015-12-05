@@ -41,6 +41,9 @@
     "async/async.d.ts": {
       "commit": "708609e0764daeb5eb64104af7aca50c520c4e6e"
     },
+    "express-handlebars/express-handlebars.d.ts": {
+      "commit": "36c6ce86fb64bafb28ec95dc78c6b98228b45c8d"
+    },
     "cookie-parser/cookie-parser.d.ts": {
       "commit": "e5a27ea95e47b95333784f1f0d590127b4e39a89"
     },
