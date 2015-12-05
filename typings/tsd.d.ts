@@ -11,3 +11,4 @@
 /// <reference path="cheerio/cheerio.d.ts" />
 /// <reference path="async/async.d.ts" />
 /// <reference path="cookie-parser/cookie-parser.d.ts" />
+/// <reference path="express-session/express-session.d.ts" />

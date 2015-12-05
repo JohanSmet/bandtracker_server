@@ -40,9 +40,12 @@
     },
     "async/async.d.ts": {
       "commit": "708609e0764daeb5eb64104af7aca50c520c4e6e"
+    },
     "cookie-parser/cookie-parser.d.ts": {
       "commit": "e5a27ea95e47b95333784f1f0d590127b4e39a89"
     },
+    "express-session/express-session.d.ts": {
+      "commit": "e5a27ea95e47b95333784f1f0d590127b4e39a89"
     }
   }
 }
