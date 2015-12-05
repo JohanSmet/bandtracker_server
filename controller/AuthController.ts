@@ -50,11 +50,11 @@ router.post('/login', jsonParser, function (request: express.Request, response: 
     
     User.repository.findOne({ 'name': request.body.name }, function (err, user) {
         if (err)
-            return response.status(403).send(err);
+            return response.status(403).json({ success: false, error: err });
         if (!user)
-            return response.send(403).send('Forbidden');
+            return response.status(403).json({ success: false, error: "invalid credentials" });
         if (user.passwdHash != hashPassword(request.body.passwd, user.salt))
-            return response.send(403).send('Forbidden');
+            return response.status(403).json({ success: false, error: "invalid credentials" });
 
         var f_token = jsonwebtoken.sign(user.roles, cfg_auth.secret, { expiresInMinutes: 1440 });
         
