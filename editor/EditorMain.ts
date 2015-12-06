@@ -23,11 +23,9 @@ var urlEncoded = bodyParser.urlencoded({ extended: true });
 
 export function init(app: express.Express) {
 
-    var viewDir = fs.realpathSync(__dirname + "/../../editor/views");
-
-    app.engine("handlebars", exphbs.create({ defaultLayout: "main", layoutsDir: viewDir + "/layouts" }).engine);
+    app.engine("handlebars", exphbs.create({ defaultLayout: "main", layoutsDir: "editor/views/layouts" }).engine);
     app.set("view engine", "handlebars");
-    app.set("views", viewDir);
+    app.set("views", "editor/views");
 
     app.use(cookieParser());
     app.use(session({ secret: '15fdser@#mdlko', resave: true, saveUninitialized: true }));
