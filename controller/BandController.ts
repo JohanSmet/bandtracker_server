@@ -72,6 +72,12 @@ router.get("/list", auth.requireAdmin, function (request: express.Request, respo
     if ("source" in request.query) {
         f_match["source"] = new RegExp(request.query.source, "i");
     }
+    if ("name" in request.query) {
+        f_match["name"] = new RegExp(request.query.name, "i");
+    }
+    if ("nobio" in request.query) {
+        f_match[`biography.${p_lang}`] = { $exists: false };
+    }
 
     // execute query
     Band.repository.aggregate()
