@@ -20,7 +20,7 @@ var bandSchema = new mongoose.Schema({
     genre       : String,
     imageUrl    : String,
     biography   : {},
-    source      : String
+    bioSource   : String
 });
 
 export var repository = mongoose.model<IBand>("Band", bandSchema);

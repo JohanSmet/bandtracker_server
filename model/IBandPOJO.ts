@@ -14,7 +14,7 @@ interface IBandPOJO {
     genre       : string;
     imageUrl    : string;
     biography   : { [key: string]: string; }
-    source      : string;
+    bioSource   : string;
 };
 
 export = IBandPOJO;

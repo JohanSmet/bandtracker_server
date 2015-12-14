@@ -72,7 +72,7 @@ export function execute(params: string[]) {
                     band.biography = {};
                 band.biography[lang] = bandBio;
                 band.markModified("biography");
-                band.source = f_url;
+                band.bioSource = f_url;
 
                 band.save();
             }

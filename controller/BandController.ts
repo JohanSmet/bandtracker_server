@@ -70,7 +70,7 @@ router.get("/list", auth.requireAdmin, function (request: express.Request, respo
     // construct query
     var f_match = {}
     if ("source" in request.query) {
-        f_match["source"] = new RegExp(request.query.source, "i");
+        f_match["bioSource"] = new RegExp(request.query.source, "i");
     }
     if ("name" in request.query) {
         f_match["name"] = new RegExp(request.query.name, "i");
@@ -82,7 +82,7 @@ router.get("/list", auth.requireAdmin, function (request: express.Request, respo
     // execute query
     Band.repository.aggregate()
         .match(f_match)
-        .project({ _id: 0, MBID: 1, name: 1, genre: 1, imageUrl: 1, source: 1, biography: `$biography.${p_lang}` })
+        .project({ _id: 0, MBID: 1, name: 1, genre: 1, imageUrl: 1, bioSource: 1, biography: `$biography.${p_lang}` })
         .sort(p_sort)
         .skip(p_skip)
         .limit(p_count)

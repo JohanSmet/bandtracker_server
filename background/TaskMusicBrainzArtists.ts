@@ -60,11 +60,11 @@ function updateArtist(artist) {
         // create or update the band
         if (!band) {
             band = new Band.repository();
-            band.MBID = artist.id;
-            band.genre = "";
-            band.imageUrl = "";
+            band.MBID      = artist.id;
+            band.genre     = "";
+            band.imageUrl  = "";
             band.biography = {};
-            band.source = "musicbrainz";
+            band.bioSource = "musicbrainz";
         }
 
         band.name = artist.name;
