@@ -59,12 +59,7 @@ function updateArtist(artist) {
     Band.repository.findOne({ 'MBID': artist.id }, function (err, band) {
         // create or update the band
         if (!band) {
-            band = new Band.repository();
-            band.MBID      = artist.id;
-            band.genre     = "";
-            band.imageUrl  = "";
-            band.biography = {};
-            band.bioSource = "musicbrainz";
+            band = Band.createNew(artist.id);
         }
 
         band.name = artist.name;

@@ -41,7 +41,10 @@ router.get('/find-by-name', auth.requireApp, function (request: express.Request,
     var f_lang = ('lang' in request.query) ? request.query.lang : 'en';
 
     Band.repository.aggregate()
-        .match({ 'name': new RegExp('.*' + request.query.name + '.*', 'i') })
+        .match({
+            'name': new RegExp('.*' + request.query.name + '.*', 'i'),
+            'recordStatus': Band.RecordStatus.Released
+         })
         .project({ _id: 0, MBID: 1, name: 1, genre: 1, imageUrl: 1, biography: `$biography.${f_lang}` })
         .sort('name')
         .exec(function (err, res) {
@@ -68,7 +71,9 @@ router.get("/list", auth.requireAdmin, function (request: express.Request, respo
     var p_sort  = ("sort"  in request.query) ? request.query.sort : "name";
     
     // construct query
-    var f_match = {}
+    var f_match = {
+        recordStatus: { $gte: Band.RecordStatus.New }
+    }
     if ("source" in request.query) {
         f_match["bioSource"] = new RegExp(request.query.source, "i");
     }
