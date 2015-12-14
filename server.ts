@@ -25,8 +25,6 @@ import TaskController   = require('./controller/TaskController');
 import KeyValueStore    = require('./KeyValueStore');
 import TaskScheduler    = require('./background/TaskScheduler');
 
-import Editor           = require("./editor/EditorMain");
-
 ///////////////////////////////////////////////////////////////////////////////
 //
 // setup express
@@ -61,8 +59,4 @@ mongoose.connection.once('open', function (callback) {
 
     // start background-tasks
     TaskScheduler.init();
-
-    // init management UI
-    Editor.init(app);
-
 });

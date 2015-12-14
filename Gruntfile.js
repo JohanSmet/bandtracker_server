@@ -3,7 +3,6 @@ module.exports = function (grunt) {
     'use strict';
 
     grunt.loadNpmTasks('grunt-typescript');
-    grunt.loadNpmTasks('grunt-contrib-copy');
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -21,16 +20,9 @@ module.exports = function (grunt) {
                     declaration: true
                 }
             }
-        },
-        copy : {
-            editorViews : {
-                expand: true,
-                src: ["editor/views/**"],
-                dest: "js/"
-            }
         }
     });
 
-    grunt.registerTask('default', ['typescript', 'copy']);
+    grunt.registerTask('default', ['typescript']);
 
 }
