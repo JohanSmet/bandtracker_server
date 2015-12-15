@@ -16,7 +16,17 @@ import cheerio  = require("cheerio");
 import Band = require('../model/Band');
 import Task = require('../model/Task');
 
+import TaskScheduler = require('./TaskScheduler');
+
 var striptags = require("striptags");
+
+(() => {
+    TaskScheduler.registerCallback(name(), execute);
+})();
+
+export function name() {
+    return "wikipediaBandBio";
+}
 
 export function execute(params: string[]) {
 

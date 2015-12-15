@@ -12,15 +12,15 @@ import mongoose = require('mongoose');
 
 import Task = require('../model/Task');
 
-import TaskMusicBrainzArtists   = require("./TaskMusicBrainzArtists");
-import TaskMusicBrainzUrl       = require("./TaskMusicBrainzUrl");
-import TaskWikipediaBandBio     = require("./TaskWikipediaBandBio");
-import TaskWikipediaTourDates   = require("./TaskWikipediaTourDates");
-import TaskWikipediaTourList    = require("./TaskWikipediaTourList");
-import TaskSetlistFmTourDates   = require("./TaskSetlistFmTourDates");
+export interface TaskCallback { (params: string[]): void; }
+var taskRepository: { [key: string]: TaskCallback; } = { }
 
 export function init() {
     task_runner();
+}
+
+export function registerCallback(p_name: string, p_func: TaskCallback) {
+    taskRepository[p_name] = p_func;
 }
 
 function task_runner() {
@@ -41,18 +41,18 @@ function task_runner() {
 
 function task_execute(task: Task.ITask) {
     
-    if (task.taskType == "musicBrainzArtists") {
-        TaskMusicBrainzArtists.execute(task.taskParams);
-    } else if (task.taskType == "musicBrainzUrl") {
-        TaskMusicBrainzUrl.execute(task.taskParams);
-    } else if (task.taskType == "wikipediaBandBio") {
-        TaskWikipediaBandBio.execute(task.taskParams);
-    } else if (task.taskType == "wikipediaTourDates") {
-        TaskWikipediaTourDates.execute(task.taskParams);
-    } else if (task.taskType == "wikipediaTourList") {
-        TaskWikipediaTourList.execute(task.taskParams);
-    } else if (task.taskType == "setlistFmTourDates") {
-        TaskSetlistFmTourDates.execute(task.taskParams);
-    }
+    if (task) {
+        var callback = taskRepository[task.taskType];
 
+        if (callback)
+            callback(task.taskParams);
+    }
 }
+
+// force-import all the tasks to make them register their callbacks
+import "./TaskMusicBrainzArtists";
+import "./TaskMusicBrainzUrl";
+import "./TaskWikipediaBandBio";
+import "./TaskWikipediaTourDates";
+import "./TaskWikipediaTourList";
+import "./TaskSetlistFmTourDates";

@@ -13,7 +13,16 @@ import http    = require("http");
 import url     = require("url");
 import cheerio = require("cheerio");
 
-import Task = require('../model/Task');
+import Task          = require('../model/Task');
+import TaskScheduler = require('./TaskScheduler');
+
+(() => {
+    TaskScheduler.registerCallback(name(), execute);
+})();
+
+export function name() {
+    return "wikipediaTourList";
+}
 
 export function execute(params: string[]) {
 

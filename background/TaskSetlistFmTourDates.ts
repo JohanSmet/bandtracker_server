@@ -16,6 +16,16 @@ import TourDate = require('../model/TourDate');
 import Country  = require('../model/Country');
 import Task     = require('../model/Task');
 
+import TaskScheduler = require('./TaskScheduler');
+
+(() => {
+    TaskScheduler.registerCallback(name(), execute);
+})();
+
+export function name() {
+    return "setlistFmTourDates";
+}
+
 export function execute(params: string[]) {
 
     // check parameters

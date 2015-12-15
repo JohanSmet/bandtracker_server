@@ -17,7 +17,17 @@ import Band     = require('../model/Band');
 import TourDate = require('../model/TourDate');
 import Country  = require('../model/Country');
 
+import TaskScheduler = require('./TaskScheduler');
+
 var striptags = require("striptags");
+
+(() => {
+    TaskScheduler.registerCallback(name(), execute);
+})();
+
+export function name() {
+    return "wikipediaTourDates";
+}
 
 class WikipediaTourDateParser {
     

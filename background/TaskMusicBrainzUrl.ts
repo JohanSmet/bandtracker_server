@@ -11,8 +11,17 @@
 import request = require("request");
 import http = require('http');
 
-import Band = require('../model/Band');
-import Task = require('../model/Task');
+import Band          = require('../model/Band');
+import Task          = require('../model/Task');
+import TaskScheduler = require('./TaskScheduler');
+
+(() => {
+    TaskScheduler.registerCallback(name(), execute);
+})();
+
+export function name() {
+    return "musicBrainzUrl";
+}
 
 export function execute(params: string[]) {
 
