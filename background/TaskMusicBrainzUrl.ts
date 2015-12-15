@@ -41,6 +41,15 @@ export function execute(params: string[]) {
 
             if (f_rel.type == "wikipedia") {
                 Task.createNew("wikipediaBandBio", [f_bandId, f_rel.url.resource]).save();
+            } else if (f_rel.type == "discogs") {
+                var f_id = f_rel.url.resource.match(/\d+$/)[0];
+
+                Band.repository.findOne({ "MBID": f_bandId }, function (err, band) {
+                    if (band) {
+                        band.discogsId = f_id;
+                        band.save();
+                    }
+                });
             }
         }
     });
