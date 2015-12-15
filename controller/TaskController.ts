@@ -11,12 +11,30 @@
 import mongoose     = require('mongoose');
 import express      = require('express');
 import bodyParser   = require('body-parser');
+import async        = require("async");
 
 import auth         = require('../middleware_auth');
 import Task         = require('../model/Task');
 
 var router = express.Router();
 var jsonParser = bodyParser.json()
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// create tasks to parse the known URLS of a band on MusicBrainz
+//  input = array of MBID
+//
+
+router.post("/mb-urls", auth.requireAdmin, jsonParser, function (request: express.Request, response: express.Response) {
+
+    var f_bands = <Array<string>> request.body.bands;
+
+    async.each(f_bands, function (bandId: string, callback: any) {
+        Task.createNew("musicBrainzUrl", [bandId]).save(callback);
+    }, function (error) {
+        response.json({ "done": f_bands.length });
+    });
+});
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -39,6 +57,11 @@ router.post('/tour-list', auth.requireAdmin, jsonParser, function (request: expr
         }
     });
 })
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// create tasks to download tourlists from setlist.fm
+//
 
 router.post("/tour-list-fm", auth.requireAdmin, function (request: express.Request, response: express.Response) {
     // XXX validate request body   
