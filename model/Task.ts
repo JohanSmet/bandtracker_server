@@ -18,6 +18,7 @@ var taskSchema = new mongoose.Schema({
     taskType    : String,
     taskParams  : [String],
     dateCreated : Date,
+    dateStarted : Date,
     dateExecuted: Date,
     resultOk    : Boolean
 });
@@ -29,6 +30,7 @@ export function createNew(taskType: string, taskParams: string[]) : ITask {
     f_task.taskType     = taskType;
     f_task.taskParams   = taskParams;
     f_task.dateCreated  = new Date();
+    f_task.dateStarted  = null;
     f_task.dateExecuted = null;
     f_task.resultOk     = false;
     return f_task;

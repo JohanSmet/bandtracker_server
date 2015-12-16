@@ -16,6 +16,7 @@ export interface TaskCallback { (params: string[], completionCallback: (err?: Er
 var taskRepository: { [key: string]: TaskCallback; } = { }
 
 export function init() {
+    task_clean_zombies();
     task_runner();
 }
 
@@ -23,9 +24,18 @@ export function registerCallback(p_name: string, p_func: TaskCallback) {
     taskRepository[p_name] = p_func;
 }
 
+function task_clean_zombies() {
+    Task.repository.update({
+        dateStarted: { $ne: null },
+        dateExecuted: null
+    }, {
+        dateExecuted: new Date()
+    });
+}
+
 function task_runner() {
 
-    Task.repository.findOneAndUpdate({ dateExecuted: null }, { dateExecuted: new Date() }, function (err, task: Task.ITask) {
+    Task.repository.findOneAndUpdate({ dateStarted: null, dateExecuted: null }, { dateStarted: new Date() }, function (err, task: Task.ITask) {
 
         var f_delay: number = 5
 
@@ -47,7 +57,8 @@ function task_execute(task: Task.ITask) {
         if (callback) {
             callback(task.taskParams, function (err?: Error) {
                 // update task status
-                task.resultOk = (err == null);
+                task.resultOk       = (err == null);
+                task.dateExecuted   = new Date();
                 task.save();
             });
         }

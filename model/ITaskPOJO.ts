@@ -13,6 +13,7 @@ interface ITaskPOJO {
     taskParams  : string[];
 
     dateCreated  : Date;
+    dateStarted  : Date;
     dateExecuted : Date;
     resultOk     : Boolean;
 };
