@@ -118,11 +118,11 @@ class WikipediaTourDateParser {
     }
 }
 
-export function execute(params: string[]) {
+export function execute(params: string[], completionCallback: (err?: Error) => void) {
 
     // check parameters
     if (params.length < 1)
-        return;
+        return completionCallback(new Error("Invalid number of parameters"));
 
     var f_url = params[0]
 
@@ -130,7 +130,7 @@ export function execute(params: string[]) {
     request(f_url, function (error: any, response: http.IncomingMessage, body: any) {
 
         if (error || response.statusCode != 200) {
-            return;
+            return completionCallback(new Error(error));
         }
 
         // parse the html data
@@ -146,13 +146,15 @@ export function execute(params: string[]) {
         Band.repository.findOne({ 'source': new RegExp('.*' + f_gigs[0]["artist"] + '.*', 'i') }, function (err, band) {
 
             if (!band) {
-                return;
+                return completionCallback(new Error("findOne failed"));
             } 
 
             for (var f_idx = 0; f_idx < f_gigs.length; ++f_idx) {
                 handleGig(band, f_gigs[f_idx]);
             }
 
+            // XXX temporary - doesn't handle failures in handleGig
+            completionCallback();
         });
 
 

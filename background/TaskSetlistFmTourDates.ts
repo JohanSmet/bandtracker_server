@@ -26,11 +26,11 @@ export function name() {
     return "setlistFmTourDates";
 }
 
-export function execute(params: string[]) {
+export function execute(params: string[], completionCallback: (err?: Error) => void) {
 
     // check parameters
     if (params.length < 2)
-        return;
+        return completionCallback(new Error("Invalid number of parameters"));
     
     var f_band = params[0];
     var f_year = parseInt(params[1]);
@@ -42,7 +42,7 @@ export function execute(params: string[]) {
     request(f_url, function (error: any, response: http.IncomingMessage, body: any) {
 
         if (error || response.statusCode != 200) {
-            return;
+            return completionCallback(new Error(error));
         }
        
         // parse body 
@@ -64,7 +64,7 @@ export function execute(params: string[]) {
             request(url, function (error: any, response: http.IncomingMessage, body: any) {
 
                 if (error || response.statusCode != 200) {
-                    return;
+                    return callback(error);
                 }
        
                 // parse body 
@@ -73,7 +73,7 @@ export function execute(params: string[]) {
                 callback();
             });
 
-        });
+        }, completionCallback);
 
 
     });

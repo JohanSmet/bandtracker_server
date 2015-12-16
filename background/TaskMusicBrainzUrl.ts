@@ -23,11 +23,11 @@ export function name() {
     return "musicBrainzUrl";
 }
 
-export function execute(params: string[]) {
+export function execute(params: string[], completionCallback: (err?: Error) => void) {
 
     // check parameters
     if (params.length < 1)
-        return;
+        return completionCallback(new Error("Invalid number of parameters"));
 
     var f_bandId = params[0]
 
@@ -38,7 +38,7 @@ export function execute(params: string[]) {
     request(f_url, function (error: any, response: http.IncomingMessage, body: any) {
 
         if (error || response.statusCode != 200) {
-            return;
+            return completionCallback(new Error(error));
         }
        
         // parse body 
@@ -61,5 +61,8 @@ export function execute(params: string[]) {
                 });
             }
         }
+
+        // XXX temporary - need to hand success/failure of band.save() in the discogs-id part
+        completionCallback();
     });
 }

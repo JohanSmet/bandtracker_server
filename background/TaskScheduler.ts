@@ -12,7 +12,7 @@ import mongoose = require('mongoose');
 
 import Task = require('../model/Task');
 
-export interface TaskCallback { (params: string[]): void; }
+export interface TaskCallback { (params: string[], completionCallback: (err?: Error) => void): void; }
 var taskRepository: { [key: string]: TaskCallback; } = { }
 
 export function init() {
@@ -44,8 +44,13 @@ function task_execute(task: Task.ITask) {
     if (task) {
         var callback = taskRepository[task.taskType];
 
-        if (callback)
-            callback(task.taskParams);
+        if (callback) {
+            callback(task.taskParams, function (err?: Error) {
+                // update task status
+                task.resultOk = (err == null);
+                task.save();
+            });
+        }
     }
 }
 

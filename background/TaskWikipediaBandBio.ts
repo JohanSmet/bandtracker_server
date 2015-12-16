@@ -28,11 +28,11 @@ export function name() {
     return "wikipediaBandBio";
 }
 
-export function execute(params: string[]) {
+export function execute(params: string[], completionCallback: (err?: Error) => void) {
 
     // check parameters
     if (params.length < 2)
-        return;
+        return completionCallback(new Error("Invalid number of parameters"));
 
     var f_bandId = params[0]
     var f_url = params[1]
@@ -41,7 +41,7 @@ export function execute(params: string[]) {
     request(f_url, function (error: any, response: http.IncomingMessage, body: any) {
 
         if (error || response.statusCode != 200) {
-            return;
+            return completionCallback(new Error(error));
         }
 
         var imageUrl : string = "";
@@ -84,7 +84,9 @@ export function execute(params: string[]) {
                 band.markModified("biography");
                 band.bioSource = f_url;
 
-                band.save();
+                band.save(completionCallback);
+            } else {
+                completionCallback(new Error("findOne failed"));
             }
         });
     });

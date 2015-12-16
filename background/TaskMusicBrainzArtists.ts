@@ -23,11 +23,11 @@ export function name() {
     return "musicBrainzArtists";
 }
 
-export function execute(params: string[]) {
+export function execute(params: string[], completionCallback: (err?: Error) => void) {
 
     // check parameters
     if (params.length < 1)
-        return;
+        return completionCallback(new Error("Invalid number of parameters"));
 
     var f_query = params[0]
     var f_skip = 0;
@@ -42,7 +42,7 @@ export function execute(params: string[]) {
     request(f_url, function (error: any, response: http.IncomingMessage, body: any) {
 
         if (error || response.statusCode != 200) {
-            return;
+            return completionCallback(new Error(error));
         }
        
         // parse body 
@@ -61,6 +61,9 @@ export function execute(params: string[]) {
             var f_task = Task.createNew("musicBrainzArtists", [f_query, f_skip.toString()]);
             f_task.save();
         }
+        
+        // mark task completion
+        completionCallback();
     });
 }
 

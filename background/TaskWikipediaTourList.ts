@@ -24,11 +24,11 @@ export function name() {
     return "wikipediaTourList";
 }
 
-export function execute(params: string[]) {
+export function execute(params: string[], completionCallback: (err?: Error) => void) {
 
     // check parameters
     if (params.length < 1)
-        return;
+        return completionCallback(new Error("Invalid number of parameters"));
 
     var f_url = params[0]
 
@@ -36,7 +36,7 @@ export function execute(params: string[]) {
     request(f_url, function (error: any, response: http.IncomingMessage, body: any) {
 
         if (error || response.statusCode != 200) {
-            return;
+            return completionCallback(new Error(error));
         }
 
         // parse the html data
@@ -56,6 +56,9 @@ export function execute(params: string[]) {
 
             Task.createNew("wikipediaTourDates", [cleanUrl(f_url, href)]).save();
         });
+
+        // XXX temporary - doesn't handle failures in previous each statement
+        completionCallback();
     });
 }
 
