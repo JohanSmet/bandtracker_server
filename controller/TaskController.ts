@@ -21,6 +21,28 @@ var jsonParser = bodyParser.json()
 
 ///////////////////////////////////////////////////////////////////////////////
 //
+// retrieve a list of tasks
+//
+
+router.get("/", auth.requireAdmin, function (request: express.Request, response: express.Response) {
+
+    var p_status = ("status" in request.query) ? request.query.status : "any";
+    var f_match = {}
+    
+    if (p_status == "open") {
+        f_match["dateExecuted"] = null;
+    } else if (p_status == "done") {
+        f_match["dateExecuted"] = { $ne: null };
+    }
+
+    Task.repository.find(f_match, function (err, res) {
+        response.json(res);
+    });
+});
+
+
+///////////////////////////////////////////////////////////////////////////////
+//
 // create tasks to parse the known URLS of a band on MusicBrainz
 //  input = array of MBID
 //
