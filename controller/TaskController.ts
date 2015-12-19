@@ -35,7 +35,9 @@ router.get("/", auth.requireAdmin, function (request: express.Request, response:
         f_match["dateExecuted"] = { $ne: null };
     }
 
-    Task.repository.find(f_match, function (err, res) {
+    Task.repository.find(f_match)
+                    .sort("-dateCreated")
+                    .exec(function (err, res) {
         response.json(res);
     });
 });
