@@ -83,6 +83,9 @@ router.get("/list", auth.requireAdmin, function (request: express.Request, respo
     if ("nobio" in request.query) {
         f_match[`biography.${p_lang}`] = { $exists: false };
     }
+    if ("nodiscogs" in request.query) {
+        f_match["discogsId"] = "";
+    }
 
     // execute query
     Band.repository.aggregate()
