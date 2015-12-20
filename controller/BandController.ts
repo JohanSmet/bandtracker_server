@@ -11,6 +11,7 @@
 import mongoose     = require('mongoose');
 import express      = require('express');
 import bodyParser   = require('body-parser');
+import async        = require("async");
 
 import auth     = require('../middleware_auth');
 import Band     = require('../model/Band');
@@ -120,8 +121,6 @@ router.get('/:id', auth.requireApp, function (request: express.Request, response
     });
 });
 
-
-
 ///////////////////////////////////////////////////////////////////////////////
 //
 // insert/update a particular band
@@ -138,5 +137,23 @@ router.post('/', auth.requireAdmin, jsonParser, function (request: express.Reque
         response.send(res);
     });
 });
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// update the status of bands
+//
+
+router.post('/update-status', auth.requireAdmin, jsonParser, function (request: express.Request, response: express.Response) {
+
+    var p_status = request.body.status || Band.RecordStatus.Revoked;
+    var p_mbids  = <Array<string>> request.body.bands;
+
+    async.each(p_mbids, function (bandId: string, callback: any) {
+        Band.repository.update({ 'MBID': bandId }, { recordStatus: p_status }, callback);
+    }, function (error) {
+        response.json({ "done": p_mbids.length });
+    });
+});
+
 
 export = router;
