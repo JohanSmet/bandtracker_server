@@ -90,7 +90,7 @@ router.get("/list", auth.requireAdmin, function (request: express.Request, respo
     // execute query
     Band.repository.aggregate()
         .match(f_match)
-        .project({ _id: 0, MBID: 1, name: 1, genre: 1, imageUrl: 1, bioSource: 1, biography: `$biography.${p_lang}` })
+        .project({ _id: 0, MBID: 1, discogsId: 1, name: 1, genre: 1, imageUrl: 1, bioSource: 1, biography: `$biography.${p_lang}`, recordStatus: 1, lastChanged: 1 })
         .sort(p_sort)
         .skip(p_skip)
         .limit(p_count)
