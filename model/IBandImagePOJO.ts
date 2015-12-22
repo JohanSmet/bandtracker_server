@@ -1,0 +1,16 @@
+﻿///////////////////////////////////////////////////////////////////////////////
+//
+// File 	: 	IBandImagePOJO.ts
+//
+// Purpose	: 	BandImage Interface
+//
+// Copyright (c) 2015	Johan SMET      All rights reserved
+//
+///////////////////////////////////////////////////////////////////////////////
+
+interface IBandImagePOJO {
+    bandId: string;
+    image: Buffer
+};
+
+export = IBandImagePOJO;

@@ -99,4 +99,21 @@ router.post("/tour-list-fm", auth.requireAdmin, function (request: express.Reque
 
 });
 
+///////////////////////////////////////////////////////////////////////////////
+//
+// create tasks to download band information form discogs
+//  input = array of MBIDs
+//
+
+router.post("/discogs_band_info", auth.requireAdmin, jsonParser, function (request: express.Request, response: express.Response) {
+
+    var f_bands = <Array<string>> request.body.bands;
+
+    async.each(f_bands, function (bandId: string, callback: any) {
+        Task.createNew("discogsBandInfo", [bandId]).save(callback);
+    }, function (error) {
+        response.json({ "done": f_bands.length });
+    });
+});
+
 export = router;

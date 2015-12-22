@@ -15,6 +15,7 @@ import cfg_db   = require('./config/db');
 import cfg_http = require('./config/http');
 
 import BandController   = require('./controller/BandController');
+import BandImageController  = require('./controller/BandImageController');
 import AuthController   = require('./controller/AuthController');
 import CountryController= require('./controller/CountryController');
 import VenueController  = require('./controller/VenueController');
@@ -33,6 +34,7 @@ import TaskScheduler    = require('./background/TaskScheduler');
 var app = express();
 
 app.use('/api/bands',   BandController);
+app.use('/api/bandImage',   BandImageController);
 app.use('/api/auth',    AuthController);
 app.use('/api/country', CountryController);
 app.use('/api/venue',   VenueController);

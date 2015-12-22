@@ -72,3 +72,4 @@ import "./TaskWikipediaBandBio";
 import "./TaskWikipediaTourDates";
 import "./TaskWikipediaTourList";
 import "./TaskSetlistFmTourDates";
+import "./TaskDiscogsBandInfo";

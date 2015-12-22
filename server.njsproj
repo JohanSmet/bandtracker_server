@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="package.json" />
+    <TypeScriptCompile Include="background\TaskDiscogsBandInfo.ts" />
     <TypeScriptCompile Include="background\TaskMusicBrainzUrl.ts" />
     <TypeScriptCompile Include="background\TaskScheduler.ts" />
     <TypeScriptCompile Include="background\TaskMusicBrainzArtists.ts" />
@@ -45,6 +46,7 @@
     <TypeScriptCompile Include="config\db.ts" />
     <TypeScriptCompile Include="config\http.ts" />
     <TypeScriptCompile Include="controller\BandController.ts" />
+    <TypeScriptCompile Include="controller\BandImageController.ts" />
     <TypeScriptCompile Include="controller\CityController.ts" />
     <TypeScriptCompile Include="controller\CountryController.ts" />
     <TypeScriptCompile Include="controller\TaskController.ts" />
@@ -54,7 +56,9 @@
     <TypeScriptCompile Include="KeyValueStore.ts" />
     <TypeScriptCompile Include="middleware_auth.ts" />
     <TypeScriptCompile Include="model\Band.ts" />
+    <TypeScriptCompile Include="model\BandImage.ts" />
     <TypeScriptCompile Include="model\Country.ts" />
+    <TypeScriptCompile Include="model\IBandImagePOJO.ts" />
     <TypeScriptCompile Include="model\IBandPOJO.ts" />
     <TypeScriptCompile Include="model\ICountryPOJO.ts" />
     <TypeScriptCompile Include="model\IKeyValuePOJO.ts" />
