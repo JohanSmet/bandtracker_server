@@ -54,7 +54,7 @@ export function execute(params: string[], completionCallback: (err?: Error) => v
         // band image
         var bandImg = $("table.infobox").find("img");
 
-        if (bandImg) {
+        if (bandImg && bandImg.length > 0) {
             imageUrl = cleanImageUrl(f_url, bandImg.attr("src"));
         }
 
@@ -78,11 +78,7 @@ export function execute(params: string[], completionCallback: (err?: Error) => v
             if (band) {
                 band.imageUrl = imageUrl;
 
-                if (!band.biography)
-                    band.biography = {};
-                band.biography[lang] = bandBio;
-                band.markModified("biography");
-                band.bioSource = f_url;
+                Band.setBiography(band, lang, bandBio, f_url);
 
                 band.save(completionCallback);
             } else {

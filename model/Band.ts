@@ -66,3 +66,11 @@ export function newVersionIfReleased(band: IBand): IBand {
         return band;
     }
 }
+
+export function setBiography(band: IBand, lang: string, bio: string, source: string) {
+    if (!band.biography)
+        band.biography = {};
+    band.biography[lang] = bio;
+    band.markModified("biography");
+    band.bioSource = source;
+}
