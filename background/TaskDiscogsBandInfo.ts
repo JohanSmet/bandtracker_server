@@ -76,6 +76,7 @@ export function execute(params: string[], completionCallback: (err?: Error) => v
                     f_bandimg.bandId = f_bandId;
                     f_bandimg.image = imgData;
                    f_bandimg.save();
+                    f_bandimg.image = new Buffer(imgData, "binary");
                 });
             }
 
