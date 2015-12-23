@@ -8,8 +8,6 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-import RestClient    = require("./RestClient");
-
 import Band          = require('../model/Band');
 import BandImage     = require("../model/BandImage");
 import TaskScheduler = require('./TaskScheduler');
