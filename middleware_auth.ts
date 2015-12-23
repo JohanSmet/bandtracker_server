@@ -37,6 +37,11 @@ function validateToken(request: express.Request, response: express.Response, nex
     }
 }
 
+export function requireAuth(request: express.Request, response: express.Response, next: Function) {
+    return  requireApp(request, response, next) ||
+            requireAdmin(request, response, next);
+}
+
 export function requireAdmin(request: express.Request, response: express.Response, next: Function) {
     return validateToken(request, response, next, "ADMIN");
 }

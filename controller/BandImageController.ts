@@ -16,7 +16,7 @@ import BandImage = require('../model/BandImage');
 
 var router = express.Router();
 
-router.get('/:id', auth.requireApp, function (request: express.Request, response: express.Response) {
+router.get('/:id', auth.requireAuth, function (request: express.Request, response: express.Response) {
     BandImage.repository.findOne({ 'bandId': request.params.id }, function (err, res) {
         if (err)
             return response.send(400, err);
