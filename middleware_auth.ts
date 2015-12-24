@@ -13,7 +13,7 @@ import jsonwebtoken = require('jsonwebtoken');
 
 import cfg_auth     = require('./config/auth');
 
-function validateToken(request: express.Request, response: express.Response, next: Function, role: string) {
+function validateToken(request: express.Request, response: express.Response, next: Function, needRoles: string[]) {
     // check header or url parameters or post parameters for token
     var token = request.headers['x-access-token'];
 
@@ -25,8 +25,10 @@ function validateToken(request: express.Request, response: express.Response, nex
             }
         
             // check for required role
-            var roles = <Array<string>> decoded;
-            if (roles.indexOf(role) < 0) {
+            var hasRoles = <Array<string>> decoded;
+            var matches = hasRoles.filter(function (value) { return needRoles.indexOf(value) >= 0; });
+            
+            if (matches.length <= 0) {
                 return response.status(403).json({ success: false, message: 'insufficient privileges' });
             }
 
@@ -38,14 +40,13 @@ function validateToken(request: express.Request, response: express.Response, nex
 }
 
 export function requireAuth(request: express.Request, response: express.Response, next: Function) {
-    return  requireApp(request, response, next) ||
-            requireAdmin(request, response, next);
+    return validateToken(request, response, next, ["ADMIN", "APP"]);
 }
 
 export function requireAdmin(request: express.Request, response: express.Response, next: Function) {
-    return validateToken(request, response, next, "ADMIN");
+    return validateToken(request, response, next, ["ADMIN"]);
 }
 
 export function requireApp(request: express.Request, response: express.Response, next: Function) {
-    return validateToken(request, response, next, "APP");
+    return validateToken(request, response, next, ["APP"]);
 }
