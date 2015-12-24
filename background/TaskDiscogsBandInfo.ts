@@ -70,11 +70,14 @@ export function execute(params: string[], completionCallback: (err?: Error) => v
 
                 // download image
                 discogsDb.image(f_imgurl, function (error, imgData, rateLimit) {
-                    var f_bandimg = new BandImage.repository();
-                    f_bandimg.bandId = f_bandId;
-                    f_bandimg.image = new Buffer(imgData, "binary");
-
-                    BandImage.repository.findOneAndUpdate({ 'bandId': f_bandId }, f_bandimg, { upsert: true }, function (err, res) {
+                    BandImage.repository.findOneAndUpdate({
+                        'bandId': f_bandId
+                    }, {
+                        bandId: f_bandId,
+                        image: new Buffer(imgData, "binary") 
+                    }, {
+                        upsert: true
+                    }, function (err, res) {
                         if (err) console.log(err);
                     });
                 });
