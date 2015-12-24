@@ -72,9 +72,7 @@ router.get("/list", auth.requireAdmin, function (request: express.Request, respo
     var p_sort  = ("sort"  in request.query) ? request.query.sort : "name";
     
     // construct query
-    var f_match = {
-        recordStatus: { $gte: Band.RecordStatus.New }
-    }
+    var f_match = { }
     if ("source" in request.query) {
         f_match["bioSource"] = new RegExp(request.query.source, "i");
     }
@@ -86,6 +84,11 @@ router.get("/list", auth.requireAdmin, function (request: express.Request, respo
     }
     if ("nodiscogs" in request.query) {
         f_match["discogsId"] = "";
+    }
+    if ("status" in request.query) {
+        f_match["recordStatus"] = parseInt(request.query.status);
+    } else {
+        f_match["recordStatus"] = { $gte: Band.RecordStatus.New };
     }
 
     // execute query
