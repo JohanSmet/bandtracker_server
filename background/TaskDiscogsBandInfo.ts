@@ -58,7 +58,7 @@ export function execute(params: string[], completionCallback: (err?: Error) => v
                 var f_parts = data.profile.split(/\r\n\r\n/);
 
                 if (f_parts && f_parts.length > 0) {
-                    f_new_biography = f_parts[0];
+                    f_new_biography = f_parts[0].replace(/\[a=([^\]]*)\]/g, "<i>$1</i>");
                     f_new_bioSource = data.uri;
                 }
             }
