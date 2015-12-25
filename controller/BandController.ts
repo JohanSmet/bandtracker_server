@@ -81,9 +81,13 @@ router.get("/list", auth.requireAdmin, function (request: express.Request, respo
     }
     if ("nobio" in request.query) {
         f_match[`biography.${p_lang}`] = { $exists: false };
+    } else if ("hasbio" in request.query) {
+        f_match[`biography.${p_lang}`] = { $exists: true };
     }
     if ("nodiscogs" in request.query) {
         f_match["discogsId"] = "";
+    } else if ("hasdiscogs" in request.query) {
+        f_match["discogsId"] = { $ne: "" };
     }
     if ("status" in request.query) {
         f_match["recordStatus"] = parseInt(request.query.status);
