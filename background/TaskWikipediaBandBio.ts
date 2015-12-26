@@ -63,15 +63,21 @@ export function execute(params: string[], completionCallback: (err?: Error) => v
 
         lang = contentText.attr("lang");
 
-        var block = contentText.find('p').first();
+        contentText.find('p').each(function (idx, element) {
 
-        while (block.has("> span.error").length > 0) {
-            block = block.next("p");
-        }
+            if (bandBio.length > 0)
+                return;
+        
+            var block = $(element);
 
-        bandBio = block.html();
-        bandBio = striptags(bandBio, ["b", "i", "u"]);
-        bandBio = bandBio.replace(/\[[0-9]+\]/g, "");
+            if (block.find("> span.error").length > 0) {
+                return;
+            }
+
+            bandBio = block.html();
+            bandBio = striptags(bandBio, ["b", "i", "u"]);
+            bandBio = bandBio.replace(/\[[0-9]+\]/g, "");
+        });
         
         // update the band
         Band.repository.findOne({ 'MBID': f_bandId }, function (err, band) {
