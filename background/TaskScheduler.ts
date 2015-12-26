@@ -33,6 +33,14 @@ function task_clean_zombies() {
     });
 }
 
+function random_delay(): number {
+
+    var low  = 15;
+    var high = 90;
+
+    return Math.floor(Math.random() * (high - low + 1) + low);
+}
+
 function task_runner() {
 
     Task.repository.findOneAndUpdate({ dateStarted: null, dateExecuted: null }, { dateStarted: new Date() }, function (err, task: Task.ITask) {
@@ -45,7 +53,7 @@ function task_runner() {
         }
 
         // schedule the next execution
-        setTimeout(task_runner, f_delay * 60 * 1000);
+        setTimeout(task_runner, f_delay * random_delay() * 1000);
     });
 }
 
