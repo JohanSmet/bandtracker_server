@@ -44,25 +44,38 @@ export function execute(params: string[], completionCallback: (err?: Error) => v
         // parse body 
         var f_data = JSON.parse(body);
 
-        for (var f_idx = 0; f_idx < f_data.relations.length; ++f_idx) {
+        // check for urls/data we're interested in
+        var discogsId = "";
 
+        for (var f_idx = 0; f_idx < f_data.relations.length; ++f_idx) {
             var f_rel = f_data.relations[f_idx];
 
             if (f_rel.type == "wikipedia") {
                 Task.createNew("wikipediaBandBio", [f_bandId, f_rel.url.resource]).save();
             } else if (f_rel.type == "discogs") {
-                var f_id = f_rel.url.resource.match(/\d+$/)[0];
-
-                Band.repository.findOne({ "MBID": f_bandId }, function (err, band) {
-                    if (band) {
-                        band.discogsId = f_id;
-                        band.save();
-                    }
-                });
+                discogsId = f_rel.url.resource.match(/\d+$/)[0];
+                Task.createNew("discogsBandInfo", [f_bandId]).save();
             }
         }
 
-        // XXX temporary - need to hand success/failure of band.save() in the discogs-id part
-        completionCallback();
+        // update / create the band as necessary
+        Band.repository.findOne({ "MBID": f_bandId }, function (err, band) {
+            
+            if (err) {
+                return completionCallback(err);
+            }
+
+            if (!band) {
+                band = Band.createNew(f_bandId);
+                band.name = f_data.name;
+            }
+
+            if (discogsId.length > 0) {
+                band.discogsId = discogsId;
+            }
+
+            band.save(completionCallback);
+        });
+
     });
 }
