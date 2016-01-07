@@ -12,6 +12,7 @@ import mongoose = require('mongoose');
 import express  = require('express');
 
 import auth     = require('../middleware_auth');
+import cache    = require('../middleware_cache');
 import TourDate = require('../model/TourDate');
 
 var router = express.Router();
@@ -21,7 +22,7 @@ var router = express.Router();
 // find
 //
 
-router.get('/find', auth.requireApp, function (request: express.Request, response: express.Response) {
+router.get('/find', auth.requireApp, cache.medium, function (request: express.Request, response: express.Response) {
     
     // XXX escape query variables
     var f_query = { city: new RegExp(request.query.pattern, "i") };

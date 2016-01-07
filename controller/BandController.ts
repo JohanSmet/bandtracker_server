@@ -14,6 +14,7 @@ import bodyParser   = require('body-parser');
 import async        = require("async");
 
 import auth     = require('../middleware_auth');
+import cache    = require('../middleware_cache');
 import Band     = require('../model/Band');
 
 var router = express.Router();
@@ -35,7 +36,7 @@ router.get('/', auth.requireApp, function (request: express.Request, response: e
 // find by name
 //
 
-router.get('/find-by-name', auth.requireApp, function (request: express.Request, response: express.Response) {
+router.get('/find-by-name', auth.requireApp, cache.medium, function (request: express.Request, response: express.Response) {
     
     // XXX escape query variables
 

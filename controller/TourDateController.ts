@@ -13,6 +13,7 @@ import express      = require('express');
 import bodyParser   = require('body-parser');
 
 import auth         = require('../middleware_auth');
+import cache        = require('../middleware_cache');
 import TourDate     = require('../model/TourDate');
 
 var router = express.Router();
@@ -23,7 +24,7 @@ var jsonParser = bodyParser.json()
 // find
 //
 
-router.get('/find', auth.requireApp, function (request: express.Request, response: express.Response) {
+router.get('/find', auth.requireApp, cache.medium, function (request: express.Request, response: express.Response) {
     
     var f_query = TourDate.repository.find({ bandId: request.query.band });
                 
@@ -61,7 +62,7 @@ router.get('/find', auth.requireApp, function (request: express.Request, respons
 // band-years : get all years with known tourdates for specified band
 //
 
-router.get("/band-years", auth.requireApp, function (request: express.Request, response: express.Response) {
+router.get("/band-years", auth.requireApp, cache.medium, function (request: express.Request, response: express.Response) {
 
     var f_query = { bandId: request.query.band };
 

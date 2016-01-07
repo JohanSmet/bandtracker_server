@@ -55,6 +55,7 @@
     <TypeScriptCompile Include="controller\VenueController.ts" />
     <TypeScriptCompile Include="KeyValueStore.ts" />
     <TypeScriptCompile Include="middleware_auth.ts" />
+    <TypeScriptCompile Include="middleware_cache.ts" />
     <TypeScriptCompile Include="model\Band.ts" />
     <TypeScriptCompile Include="model\BandImage.ts" />
     <TypeScriptCompile Include="model\Country.ts" />

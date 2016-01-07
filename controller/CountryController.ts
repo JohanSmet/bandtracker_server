@@ -13,6 +13,7 @@ import express      = require('express');
 import bodyParser   = require('body-parser');
 
 import auth         = require('../middleware_auth');
+import cache        = require('../middleware_cache');
 import Country      = require('../model/Country');
 import KeyValueStore = require('../KeyValueStore');
 
@@ -35,7 +36,7 @@ router.get('/', auth.requireApp, function (request: express.Request, response: e
 // sync
 //
 
-router.get('/sync', auth.requireApp, function (request: express.Request, response: express.Response) {
+router.get('/sync', auth.requireApp, cache.medium, function (request: express.Request, response: express.Response) {
 
     // XXX escape query variables
     var f_lang    = ('lang' in request.query) ? request.query.lang : 'en';
