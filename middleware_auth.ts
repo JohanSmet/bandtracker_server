@@ -17,6 +17,10 @@ function validateToken(request: express.Request, response: express.Response, nex
     // check header or url parameters or post parameters for token
     var token = request.headers['x-access-token'];
 
+    if (!token && 'access-token' in request.query) {
+        token = request.query['access-token']
+    }
+
     if (token) {
         // verify validity
         jsonwebtoken.verify(token, cfg_auth.secret, function (err, decoded) {
