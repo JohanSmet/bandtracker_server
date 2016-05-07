@@ -62,6 +62,26 @@ router.get('/find', auth.requireApp, cache.medium, function (request: express.Re
 // band-years : get all years with known tourdates for specified band
 //
 
+router.get("/band-years-count", auth.requireApp, function (request: express.Request, response: express.Response) {
+
+    var f_query = { bandId: request.query.band };
+
+    TourDate.repository.aggregate()
+        .match(f_query)
+        .project({ _id: 0, year: { $year: "$startDate" } })
+        .group({ _id: "$year", count: { $sum: 1 } })
+        .sort("_id")
+        .project({ _id: 0, year: "$_id", count: 1 })
+        .exec(function (err, res: any) {
+            if (err)
+                return response.send(400, err);
+            if (!res)
+                return response.sendStatus(404);
+
+            response.json(res);
+        });
+});
+
 router.get("/band-years", auth.requireApp, cache.medium, function (request: express.Request, response: express.Response) {
 
     var f_query = { bandId: request.query.band };
@@ -86,6 +106,7 @@ router.get("/band-years", auth.requireApp, cache.medium, function (request: expr
             response.json(f_result);
         });
 });
+
 
 
 export = router;
