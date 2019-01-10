@@ -5,6 +5,9 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <Name>server</Name>
     <RootNamespace>server</RootNamespace>
+    <ToolsVersionPromptShown>0.0</ToolsVersionPromptShown>
+    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
+    <SaveNodeJsSettingsInProjectFile>True</SaveNodeJsSettingsInProjectFile>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -71,10 +74,6 @@
     <TypeScriptCompile Include="model\ITaskPOJO.ts" />
     <TypeScriptCompile Include="model\User.ts" />
     <TypeScriptCompile Include="server.ts" />
-    <TypeScriptCompile Include="typings\express\express.d.ts" />
-    <TypeScriptCompile Include="typings\mime\mime.d.ts" />
-    <TypeScriptCompile Include="typings\serve-static\serve-static.d.ts" />
-    <TypeScriptCompile Include="typings\tsd.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="config\" />
@@ -82,9 +81,6 @@
     <Folder Include="model\" />
     <Folder Include="background\" />
     <Folder Include="typings\" />
-    <Folder Include="typings\express\" />
-    <Folder Include="typings\mime\" />
-    <Folder Include="typings\serve-static\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Gruntfile.js" />
@@ -93,6 +89,17 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <TypeScriptOutDir>js</TypeScriptOutDir>
     <TypeScriptGeneratesDeclarations>True</TypeScriptGeneratesDeclarations>
+    <TypeScriptTarget>ES2015</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <TypeScriptOutDir>js</TypeScriptOutDir>

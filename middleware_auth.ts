@@ -29,8 +29,7 @@ function validateToken(request: express.Request, response: express.Response, nex
             }
         
             // check for required role
-            var hasRoles = <Array<string>> decoded;
-            var matches = hasRoles.filter(function (value) { return needRoles.indexOf(value) >= 0; });
+            var matches = decoded.roles.filter(role => needRoles.indexOf(role) >= 0);
             
             if (matches.length <= 0) {
                 return response.status(403).json({ success: false, message: 'insufficient privileges' });

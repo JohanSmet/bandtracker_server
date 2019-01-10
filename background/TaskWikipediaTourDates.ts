@@ -11,7 +11,7 @@
 import request  = require("request");
 import http     = require("http");
 import url      = require("url");
-import cheerio  = require("cheerio");
+import Cheerio  = require("cheerio");
 
 import Band     = require('../model/Band');
 import TourDate = require('../model/TourDate');
@@ -69,7 +69,7 @@ class WikipediaTourDateParser {
     parseTourDatesHtml = (p_html: string): { [key: string]: string }[]=> {
 
         var f_gigs: { [key: string]: string }[] = [];
-        var $ = cheerio.load(p_html);
+        var $ = Cheerio.load(p_html);
 
         this.init_parser();
         

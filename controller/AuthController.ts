@@ -12,7 +12,7 @@ import mongoose     = require('mongoose');
 import express      = require('express');
 import bodyParser   = require('body-parser');
 import crypto       = require('crypto');
-import uuid         = require('node-uuid');
+import uuid         = require('uuid');
 import jsonwebtoken = require('jsonwebtoken');
 
 import cfg_auth     = require('../config/auth');
@@ -56,7 +56,7 @@ router.post('/login', jsonParser, function (request: express.Request, response: 
         if (user.passwdHash != hashPassword(request.body.passwd, user.salt))
             return response.status(403).json({ success: false, error: "invalid credentials" });
 
-        var f_token = jsonwebtoken.sign(user.roles, cfg_auth.secret, { expiresInMinutes: 1440 });
+        var f_token = jsonwebtoken.sign({ roles: user.roles }, cfg_auth.secret, { expiresIn: 1440 * 60 });
         
         response.json({
             success: true,

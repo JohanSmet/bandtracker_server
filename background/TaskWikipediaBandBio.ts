@@ -18,7 +18,7 @@ import Task = require('../model/Task');
 
 import TaskScheduler = require('./TaskScheduler');
 
-var striptags = require("striptags");
+import striptags = require("striptags");
 
 (() => {
     TaskScheduler.registerCallback(name(), execute);

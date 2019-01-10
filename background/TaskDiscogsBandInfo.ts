@@ -11,8 +11,9 @@
 import Band          = require('../model/Band');
 import BandImage     = require("../model/BandImage");
 import TaskScheduler = require('./TaskScheduler');
+import Disconnect    = require('disconnect');
 
-var Discogs          = require('disconnect').Client;
+var Discogs = Disconnect.Client;
 
 var API_KEY = "IPBxKHcmvdFysmwTbxcu";
 var API_SECRET = "LplnDCgNevMOhZqMxzPxakRwVdXRFnSI";
