@@ -1,1 +1,1 @@
-﻿export var url = 'mongodb://vm-srv-web/bandtracker';
+﻿export var url = 'mongodb://bandtracker_usr:bandtracker_usr@ct-mongodb/bandtracker';
