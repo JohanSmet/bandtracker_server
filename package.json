@@ -13,7 +13,7 @@
     "disconnect": "^0.6.8",
     "express": "^4.16.4",
     "jsonwebtoken": "^5.0.5",
-    "mongoose": "^4.1.6",
+    "mongoose": "^5.4.3",
     "request": "^2.65.0",
     "striptags": "^3.1.1",
     "uuid": "^3.3.2"
@@ -23,10 +23,8 @@
     "start": "node js/server.js"
   },
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-typescript": "^0.8.0",
     "@types/jsonwebtoken": "^8.3.0",
-    "@types/mongoose": "^4.7.41",
+    "@types/mongoose": "^5.3.7",
     "@types/node": "^10.12.18",
     "typescript": "^3.2.2"
   }

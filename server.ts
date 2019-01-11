@@ -47,7 +47,8 @@ app.use('/api/task',    TaskController);
 // setup mongodb / mongoose
 //
 
-mongoose.connect(cfg_db.url);
+mongoose.Promise = require('bluebird');
+mongoose.connect(cfg_db.url, { useNewUrlParser: true });
 
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
 mongoose.connection.once('open', function (callback) {
