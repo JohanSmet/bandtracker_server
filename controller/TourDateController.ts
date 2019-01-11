@@ -49,7 +49,7 @@ router.get('/find', auth.requireApp, cache.medium, function (request: express.Re
         .sort("startDate")
         .exec(function (err, tourdates) {
             if (err)
-                return response.send(400, err);
+                return response.status(400).send(err);
             if (!tourdates)
                 return response.sendStatus(404);
 
@@ -74,7 +74,7 @@ router.get("/band-years-count", auth.requireApp, function (request: express.Requ
         .project({ _id: 0, year: "$_id", count: 1 })
         .exec(function (err, res: any) {
             if (err)
-                return response.send(400, err);
+                return response.status(400).send(err);
             if (!res)
                 return response.sendStatus(404);
 
@@ -93,7 +93,7 @@ router.get("/band-years", auth.requireApp, cache.medium, function (request: expr
         .sort("_id")
         .exec(function (err, res : any) {
             if (err)
-                return response.send(400, err);
+                return response.status(400).send(err);
             if (!res)
                 return response.sendStatus(404);
 

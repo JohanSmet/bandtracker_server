@@ -15,7 +15,7 @@ import cfg_auth     = require('./config/auth');
 
 function validateToken(request: express.Request, response: express.Response, next: Function, needRoles: string[]) {
     // check header or url parameters or post parameters for token
-    var token = request.headers['x-access-token'];
+    var token : string = <string> request.headers['x-access-token'];
 
     if (!token && 'access-token' in request.query) {
         token = request.query['access-token']
@@ -23,7 +23,7 @@ function validateToken(request: express.Request, response: express.Response, nex
 
     if (token) {
         // verify validity
-        jsonwebtoken.verify(token, cfg_auth.secret, function (err, decoded) {
+        jsonwebtoken.verify(token, cfg_auth.secret, function (err, decoded : any) {
             if (err) {
                 return response.status(403).json({ success: false, message: 'invalid token' });
             }

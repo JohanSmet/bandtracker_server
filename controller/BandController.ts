@@ -51,7 +51,7 @@ router.get('/find-by-name', auth.requireApp, cache.medium, function (request: ex
         .sort('name')
         .exec(function (err, res) {
             if (err)
-                return response.send(400, err);
+                return response.status(400).send(err);
             if (!res)
                 return response.sendStatus(404);
 
@@ -105,7 +105,7 @@ router.get("/list", auth.requireAdmin, function (request: express.Request, respo
         .limit(p_count)
         .exec(function (err, res) {
             if (err)
-                return response.send(400, err);
+                return response.status(400).send(err);
             if (!res)
                 return response.sendStatus(404);
 
@@ -121,7 +121,7 @@ router.get("/list", auth.requireAdmin, function (request: express.Request, respo
 router.get('/:id', auth.requireApp, function (request: express.Request, response: express.Response) {
     Band.repository.findOne({ 'MBID': request.params.id }, function (err, res) {
         if (err)
-            return response.send(400, err);
+            return response.status(400).send(err);
         if (!res)
             return response.sendStatus(404);
 
@@ -140,7 +140,7 @@ router.post('/', auth.requireAdmin, jsonParser, function (request: express.Reque
     // update database
     Band.repository.findOneAndUpdate({ 'MBID': request.body.MBID }, request.body, { upsert: true }, function (err, res) {
         if (err)
-            return response.send(400, err);
+            return response.status(400).send(err);
 
         response.send(res);
     });

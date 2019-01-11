@@ -38,7 +38,7 @@ router.get('/find', auth.requireApp, cache.medium, function (request: express.Re
         .sort('city')
         .exec(function (err, res) {
             if (err)
-                return response.send(400, err);
+                return response.status(400).send(err);
             if (!res)
                 return response.sendStatus(404);
 

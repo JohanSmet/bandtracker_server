@@ -54,7 +54,7 @@ router.get('/sync', auth.requireApp, cache.medium, function (request: express.Re
         .sort('code')
         .exec(function (err, countries : [Country.ICountry]) {
             if (err)
-                return response.send(400, err);
+                return response.status(400).send(err);
             if (!countries)
                 return response.sendStatus(404);
 
