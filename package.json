@@ -19,7 +19,7 @@
     "uuid": "^3.3.2"
   },
   "scripts": {
-    "prepublish": "node node_modules/typescript/bin/tsc",
+    "prepare": "node node_modules/typescript/bin/tsc",
     "start": "node js/server.js"
   },
   "devDependencies": {
